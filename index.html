@@ -13,6 +13,7 @@
     // Cordova is ready
     //
     function load() { 
+        alert("Entramos al load");
       var el = document.getElementById("boton"); 
       el.addEventListener("click", onDeviceReady, false); 
     }
@@ -22,14 +23,17 @@
     }
 
     function gotFS(fileSystem) {
+        alert("Entramos al gotFS");
         fileSystem.root.getFile("readme.txt", {create: true, exclusive: false}, gotFileEntry, fail);
     }
 
     function gotFileEntry(fileEntry) {
+        alert("Entramos al gotFileEntry");
         fileEntry.createWriter(gotFileWriter, fail);
     }
 
     function gotFileWriter(writer) {
+        alert("Entramos al gotFileWriter");
         writer.onwriteend = function(evt) {
             console.log("contents of file now 'some sample text'");
             writer.truncate(11);  
